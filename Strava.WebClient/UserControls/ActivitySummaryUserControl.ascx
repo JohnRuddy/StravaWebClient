@@ -1,4 +1,4 @@
-﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="ActivitySummaryUserControl.ascx.cs" Inherits="ActivitySummaryUserControl" %>
+﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="ActivitySummaryUserControl.ascx.cs" Inherits="Strava.WebClient.UserControls.ActivitySummaryUserControl"  %>
 <div class="panel-heading">
     <i class="fa fa-bell fa-fw"></i>Activity Summary
                        
@@ -6,14 +6,15 @@
 <!-- /.panel-heading -->
 <div class="panel-body">
     <div class="list-group">
-        <asp:Repeater ID="Repeater1" runat="server">
+        <asp:Repeater ID="ActivityRepeater" runat="server">
             <ItemTemplate>
                 <a href="#" class="list-group-item">
-                    <i class="fa fa-comment fa-fw"></i>Lorem Ipsum text goes here as filler.                    
-                    <span class="pull-right text-muted small"><em>4 minutes ago</em></span>
+                    <i class="fa fa-comment fa-fw"></i><%# DataBinder.Eval(Container.DataItem, "Name") %>                    
+                    <span class="pull-right text-muted small"><em> <%# DataBinder.Eval(Container.DataItem, "DateTimeStart") %>  </em></span>
                 </a>
             </ItemTemplate>
         </asp:Repeater>
+        
     </div>
     <!-- /.list-group -->
     <%--<a href="#" class="btn btn-default btn-block">View All Alerts</a>--%>

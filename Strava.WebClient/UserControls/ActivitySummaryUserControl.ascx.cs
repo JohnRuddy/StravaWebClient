@@ -1,4 +1,5 @@
-﻿using Strava.Clients;
+﻿using Strava.Activities;
+using Strava.Clients;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,7 +19,10 @@ namespace Strava.WebClient.UserControls
             DateTime before = DateTime.Now;
 
             List<Strava.Activities.ActivitySummary> activityList = activities.GetActivities(after, before);
-            
+
+            Repeater repeater = (Repeater)this.FindControl("ActivityRepeater");
+            repeater.DataSource = activityList.ToList<ActivitySummary>();
+            repeater.DataBind();
         }
     }
 }
